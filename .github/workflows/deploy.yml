@@ -1,29 +1,22 @@
-# .github/workflows/deploy.yml
 name: Deploy GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Triggers the action on push to the main branch
+      - main  # Change this if you're deploying from a different branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout the repository
+        uses: actions/checkout@v3
 
-    - name: Setup Node.js (if you are using a static site generator like Jekyll or Hugo)
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Build site (if needed)
-      run: npm install && npm run build
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./  # Change this if your static site generator outputs files to a different folder
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # publish_branch: gh-pages   # GitHub Pages will serve from this branch
+          publish_branch: main   # GitHub Pages will serve from this branch
+          publish_dir: ./            # Root directory of your repository
