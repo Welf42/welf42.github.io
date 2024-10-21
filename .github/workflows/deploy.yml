@@ -17,6 +17,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # publish_branch: gh-pages   # GitHub Pages will serve from this branch
-          publish_branch: main   # GitHub Pages will serve from this branch
+          publish_branch: gh-pages   # GitHub Pages will serve from this branch
           publish_dir: ./            # Root directory of your repository
